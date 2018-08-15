@@ -1,13 +1,35 @@
-<h1>add a product</h1>
+<h1>Add a Product</h1>
 
-<%= if @product.errors.any? %>
+<%= form_for(@product) do |f| %>
+<p>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+</p>
+<p>
+  <%= f.label :description %><br>
+  <%= f.text_field :description %>
+</p>
+<p>
+  <%= f.label :price_in_cents %><br>
+  <%= f.text_field :price_in_cents %>
+</p>
+
+<p>
+  <%= f.submit "Save" %>
+</p>
+<% end %>
+
+<% if @product.errors.any? %>
+
 <div>
-  <h2><%=  pluralize(@product.errors.count,"error")%> the product is not saved </h2>
+  <h2>
+    <p>
+      <%=  pluralize(@product.errors.count,"error")%>
+    </p>
 
-  <ul>
-    <%= @product.error.full_message.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
+    <p>the product is not saved</p>
+  </h2>
+
 </div>
+
 <% end %>

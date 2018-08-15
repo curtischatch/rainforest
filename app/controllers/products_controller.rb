@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
 
     @product.name = params[:product][:name]
     @product.description = params[:product][:description]
-    @product.price = params[:product][:price_in_cents]
+    @product.price_in_cents = params[:product][:price_in_cents]
 
     if @product.save
       redirect_to "/products"
@@ -30,20 +30,6 @@ class ProductsController < ApplicationController
   def edit
     @product = Product.find(params[:id])
   end
-
-  # def update
-  #   @product = Picture.find(params[:id])
-  #
-  #   @product.name = params[:product][:name]
-  #   @product.decsci = params[:product][:description]
-  #   @product.url = params[:product][:price_in_cents]
-  #
-  #   if @product.save
-  #     redirect_to "/pictures/#{@picture.id}"
-  #   else
-  #     render :edit
-  #   end
-  # end
 
   def destroy
     @product = Product.find(params[:id])
