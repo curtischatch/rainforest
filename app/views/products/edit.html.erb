@@ -1,1 +1,12 @@
-a
+
+<%= if @product.errors.any? %>
+<div>
+  <h2><%=  pluralize(@product.errors.count,"error")%> the product is not saved </h2>
+
+  <ul>
+    <%= @product.error.full_message.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

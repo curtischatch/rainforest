@@ -1,1 +1,16 @@
 <h1>Products</h1>
+
+
+<ul>
+  <li>
+    <% Product.all.each do |product| %>
+      <p><%= product.name  %></p>
+      <p><%= product.description %></p>
+      <p><%= product.price_in_cents %></p>
+
+
+      <p><%= link_to("New Reviews", "/products/#{product.id}") %></p>
+
+    <% end %>
+  </li>
+</ul>
