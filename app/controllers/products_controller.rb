@@ -20,7 +20,9 @@ class ProductsController < ApplicationController
     @product.price_in_cents = params[:product][:price_in_cents]
 
     if @product.save
+      flash[:notice] = "You've successfully created a new product."
       redirect_to "/products"
+
     else
       render :new
     end
@@ -39,6 +41,7 @@ class ProductsController < ApplicationController
 
     if @product.save
       redirect_to product_url(@product.id)
+      flash[:notice] = "You've successfully updated a product."
     else
       render :edit
     end
@@ -47,6 +50,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
+    flash[:notice] = "You've successfully deleted a product."
     redirect_to "/products"
   end
 
