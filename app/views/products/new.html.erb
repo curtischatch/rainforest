@@ -20,16 +20,14 @@
 <% end %>
 
 <% if @product.errors.any? %>
+  <div>
+    <!-- #id's every field and returns error -->
+    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this article from being saved:</h2>
 
-<div>
-  <h2>
-    <p>
-      <%=  pluralize(@product.errors.count,"error")%>
-    </p>
-
-    <p>the product is not saved</p>
-  </h2>
-
-</div>
-
+    <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>

@@ -1,12 +1,33 @@
+<h1>Edit a Product</h1>
 
-<%= if @product.errors.any? %>
-<div>
-  <h2><%=  pluralize(@product.errors.count,"error")%> the product is not saved </h2>
+<%= form_for(@product) do |f| %>
+<p>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+</p>
+<p>
+  <%= f.label :description %><br>
+  <%= f.text_field :description %>
+</p>
+<p>
+  <%= f.label :price_in_cents %><br>
+  <%= f.text_field :price_in_cents %>
+</p>
 
-  <ul>
-    <%= @product.error.full_message.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
+<p>
+  <%= f.submit "Save" %>
+</p>
+<% end %>
+
+<% if @product.errors.any? %>
+  <div>
+    <!-- #id's every field and returns error -->
+    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>

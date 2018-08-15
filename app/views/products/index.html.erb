@@ -9,8 +9,12 @@
       <p><%= product.price_in_cents %></p>
 
 
-      <p><%= link_to("New Reviews", "/products/#{product.id}") %></p>
+      <p><%= link_to("reviews", product_url(product.id)) %></p>
 
     <% end %>
   </li>
 </ul>
+
+<p>
+  <%= link_to("new product", new_product_url) %>
+</p>
